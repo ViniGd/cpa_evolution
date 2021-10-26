@@ -5,7 +5,8 @@ class Bandeira extends StatelessWidget {
   String titulo;
   String descricao;
 
-  Bandeira(this.titulo, this.descricao);
+
+  Bandeira(this.titulo, this.descricao,);
 
   @override
   Widget build(BuildContext context) {
