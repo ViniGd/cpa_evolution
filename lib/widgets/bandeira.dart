@@ -9,8 +9,7 @@ class Bandeira extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Center(
         child: Container(
           width: MediaQuery
               .of(context)
@@ -30,7 +29,7 @@ class Bandeira extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 20,),
               ),
               GestureDetector(
-                onTap: (){print("bunana");},
+                onTap: (){print("funfou");},
                 child: Container(
                   padding: EdgeInsets.fromLTRB(60, 10, 60, 10),
                   height: 60,
@@ -45,7 +44,6 @@ class Bandeira extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
