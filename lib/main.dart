@@ -1,4 +1,5 @@
 import 'package:cpa_evolution/screens/home.dart';
+import 'package:cpa_evolution/screens/login.dart';
 import 'package:cpa_evolution/widgets/bandeira.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: Login(),
     );
   }
 }

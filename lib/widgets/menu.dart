@@ -8,7 +8,7 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(child: Container(
       width: MediaQuery.of(context).size.width,
-      height: 70,
+      height: MediaQuery.of(context).size.height*0.1,
       color: Color(0xff004684) ,
       padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
       child: Row(
