@@ -1,8 +1,8 @@
 import 'package:cpa_evolution/widgets/bandeira.dart';
-import 'package:cpa_evolution/widgets/rodape.dart';
+import 'package:cpa_evolution/widgets/estrutura/rodape.dart';
 import 'package:cpa_evolution/widgets/texto.dart';
-import 'package:cpa_evolution/widgets/vazio.dart';
-import 'package:cpa_evolution/widgets/menu.dart';
+import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
+import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
