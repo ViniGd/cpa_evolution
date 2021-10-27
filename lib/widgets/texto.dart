@@ -9,10 +9,8 @@ class Texto extends StatelessWidget {
       width: MediaQuery
           .of(context)
           .size
-          .width * 0.8,
+          .width * 0.6,
       height: 200,
-      padding: EdgeInsets.fromLTRB(60, 30, 60, 30),
-      decoration: BoxDecoration(color: Color(0xffffffff), borderRadius: BorderRadius.all(Radius.circular(50),),),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

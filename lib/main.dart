@@ -1,6 +1,11 @@
 import 'package:cpa_evolution/screens/cadastro.dart';
 import 'package:cpa_evolution/screens/home.dart';
 import 'package:cpa_evolution/screens/login.dart';
+import 'package:cpa_evolution/screens/materias.dart';
+import 'package:cpa_evolution/screens/materias_aval.dart';
+import 'package:cpa_evolution/screens/professores.dart';
+import 'package:cpa_evolution/screens/professores_aval.dart';
+import 'package:cpa_evolution/screens/testepqqsoutroll_apagadps.dart';
 import 'package:cpa_evolution/widgets/bandeira.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +26,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: Cadastro(),
+      home: Professores_aval(),
     );
   }
 }

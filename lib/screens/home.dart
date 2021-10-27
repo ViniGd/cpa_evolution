@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Menu(),
-            Vazio(50),
+            Vazio(50,0),
             Text(
               "CPA Evolution",
               style: TextStyle(
@@ -25,9 +25,9 @@ class Home extends StatelessWidget {
                 fontSize: 75,
               ),
             ),
-            Vazio(50),
+            Vazio(50,0),
             Texto(),
-            Vazio(50),
+            Vazio(50,0),
             Bandeira(
               "Matérias",
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad "
@@ -35,7 +35,7 @@ class Home extends StatelessWidget {
                   "in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia"
                   "deserunt mollit anim id est laborum.",
             ),
-            Vazio(50),
+            Vazio(50,0),
             Bandeira(
               "Professores",
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad"
@@ -43,7 +43,7 @@ class Home extends StatelessWidget {
                   "in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui offici"
                   "deserunt mollit anim id est laborum.",
             ),
-            Vazio(50),
+            Vazio(50,0),
             Rodape(),
           ],
         )

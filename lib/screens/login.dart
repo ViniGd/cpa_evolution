@@ -79,7 +79,7 @@ class Login extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Vazio(50),
+                      Vazio(50,0),
                       Container(
                         width: 300,
                         child: Column(
@@ -122,9 +122,9 @@ class Login extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Vazio(50),
+                      Vazio(50,0),
                       const Text("Não tem uma conta? clique aqui e cadastre-se",style: TextStyle(fontSize: 20,color: Colors.white),),
-                      Vazio(50),
+                      Vazio(50,0),
                       GestureDetector(
                         onTap: () {
                           print("funfou");

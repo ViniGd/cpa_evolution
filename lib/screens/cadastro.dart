@@ -134,7 +134,7 @@ class _CadastroState extends State<Cadastro> {
                           ],
                         ),
                       ),
-                      Vazio(50),
+                      Vazio(50,0),
                       Container(
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: Row(
@@ -229,7 +229,7 @@ class _CadastroState extends State<Cadastro> {
                           ],
                         ),
                       ),
-                      Vazio(50),
+                      Vazio(50,0),
                       Container(
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: Row(
@@ -320,7 +320,7 @@ class _CadastroState extends State<Cadastro> {
                           ],
                         ),
                       ),
-                      Vazio(50),
+                      Vazio(50,0),
                       GestureDetector(
                         onTap: () {
                           print("funfou");
