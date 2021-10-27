@@ -1,3 +1,4 @@
+import 'package:cpa_evolution/screens/cadastro.dart';
 import 'package:cpa_evolution/screens/home.dart';
 import 'package:cpa_evolution/screens/login.dart';
 import 'package:cpa_evolution/widgets/bandeira.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: Login(),
+      home: Cadastro(),
     );
   }
 }
