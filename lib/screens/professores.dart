@@ -12,7 +12,16 @@ class Professores extends StatelessWidget {
       body: Column(
         children: [
           Menu(),
-          Container(),
+          Column(children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 50, 0, 20),
+              child: Text(
+                "Professores",
+                style: TextStyle(fontSize: 80, color: Color(0xff004684)),
+              ),
+            ),
+
+          ],),
           Rodape(),
         ],
       ),
