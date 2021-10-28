@@ -15,7 +15,7 @@ class Materias extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Menu(),
+          Menu("materias"),
           Column(children: [
             Container(
               margin: EdgeInsets.fromLTRB(0, 50, 0, 20),

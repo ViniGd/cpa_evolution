@@ -16,7 +16,7 @@ class Home extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Menu(),
+            Menu("home"),
             Vazio(50,0),
             Text(
               "CPA Evolution",

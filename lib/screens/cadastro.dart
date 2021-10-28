@@ -17,7 +17,7 @@ class _CadastroState extends State<Cadastro> {
     return Scaffold(
       body: Column(
         children: [
-          Menu(),
+          Menu("inBetween"),
           Container(
             height: MediaQuery.of(context).size.height * 0.8,
             width: MediaQuery.of(context).size.width,
