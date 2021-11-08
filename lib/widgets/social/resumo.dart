@@ -2,25 +2,23 @@ import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
 import 'package:flutter/material.dart';
 
 class Resumo extends StatelessWidget {
-  String curso;
   String codigo;
-  String nomecurso;
-  double score;
+  String nome;
+  String score;
 
-  Resumo(this.curso,this.codigo,this.nomecurso,this.score);
+  Resumo(this.codigo,this.nome,this.score, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(child: Container(
       width: MediaQuery.of(context).size.width * 0.35,
       height: 80,
-      decoration: BoxDecoration(color: Color(0xff004684), borderRadius: BorderRadius.all(Radius.circular(5),),),
+      decoration: const BoxDecoration(color: Color(0xff004684), borderRadius: BorderRadius.all(Radius.circular(15),),),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text("$curso-$codigo - $nomecurso", style: TextStyle(color: Colors.white, fontSize: 20,),),
-          Vazio(0, 360),
-          Text("| $score/10", style: TextStyle(color: Colors.white, fontSize: 20,),),
+          Text("$codigo - $nome", style: const TextStyle(color: Colors.white, fontSize: 20,),),
+          Text("| $score", style: const TextStyle(color: Colors.white, fontSize: 20,),),
         ],
       ),
     ));
