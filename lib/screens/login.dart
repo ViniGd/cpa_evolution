@@ -1,3 +1,4 @@
+import 'package:cpa_evolution/screens/cadastro.dart';
 import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:cpa_evolution/widgets/estrutura/rodape.dart';
 import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
@@ -13,7 +14,7 @@ class Login extends StatelessWidget {
         children: [
           Menu("login"),
           Container(
-            height: MediaQuery.of(context).size.height * 0.8,
+            height: MediaQuery.of(context).size.height * 0.85,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
@@ -123,7 +124,18 @@ class Login extends StatelessWidget {
                         ),
                       ),
                       Vazio(50,0),
-                      const Text("Não tem uma conta? clique aqui e cadastre-se",style: TextStyle(fontSize: 20,color: Colors.white),),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder: (c, a1, a2) => Cadastro(),
+                              transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+                              transitionDuration: Duration(milliseconds: 100),
+                            ),
+                          );
+                        },
+                          child: const Text("Não tem uma conta? clique aqui e cadastre-se",style: TextStyle(fontSize: 20,color: Colors.white),)),
                       Vazio(50,0),
                       GestureDetector(
                         onTap: () {

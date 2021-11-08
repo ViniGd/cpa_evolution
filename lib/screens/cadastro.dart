@@ -19,7 +19,7 @@ class _CadastroState extends State<Cadastro> {
         children: [
           Menu("inBetween"),
           Container(
-            height: MediaQuery.of(context).size.height * 0.8,
+            height: MediaQuery.of(context).size.height * 0.85,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
