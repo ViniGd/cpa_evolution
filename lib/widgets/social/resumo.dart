@@ -30,41 +30,44 @@ class _ResumoState extends State<Resumo> {
         fonte = 20;
         largura = 0.35;
       }
-      return Center(
-          child: Container(
-        width: MediaQuery.of(context).size.width * largura,
-        height: 80,
-        decoration: const BoxDecoration(
-          color: Color(0xff004684),
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
+      return Visibility(
+        visible: widget.nome == "" ? false : true,
+        child: Center(
+            child: Container(
+          width: MediaQuery.of(context).size.width * largura,
+          height: 80,
+          decoration: const BoxDecoration(
+            color: Color(0xff004684),
+            borderRadius: BorderRadius.all(
+              Radius.circular(15),
+            ),
           ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            SizedBox(
-              child: Text(
-                "${widget.codigo} - ${widget.nome}",
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                child: Text(
+                  "${widget.codigo} - ${widget.nome}",
+
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: fonte,
+                  ),
+                ),
+              ),
+              Text(
+                "| ${widget.score}",
 
                 style: TextStyle(
                   color: Colors.white,
+
                   fontSize: fonte,
                 ),
               ),
-            ),
-            Text(
-              "| ${widget.score}",
-
-              style: TextStyle(
-                color: Colors.white,
-
-                fontSize: fonte,
-              ),
-            ),
-          ],
-        ),
-      ));
+            ],
+          ),
+        )),
+      );
     });
   }
 }

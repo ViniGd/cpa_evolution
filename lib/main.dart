@@ -1,4 +1,5 @@
 import 'package:cpa_evolution/screens/home.dart';
+import 'package:cpa_evolution/screens/professores_aval.dart';
 import 'package:flutter/material.dart';
 
 void main() {

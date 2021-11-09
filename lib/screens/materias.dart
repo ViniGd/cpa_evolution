@@ -115,7 +115,7 @@ class _MateriasState extends State<Materias> {
                         child: const Icon(Icons.arrow_right_rounded,size: 100, color: Color(0xff004684)),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             );
