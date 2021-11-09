@@ -77,6 +77,7 @@ class _Professores_avalState extends State<Professores_aval> {
 
                             Container(
                               width: 300,
+                              height: 200,
                               padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
                               child: TextFormField(
                                 keyboardType: TextInputType.multiline,

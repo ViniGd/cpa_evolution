@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: Professores_aval(),
     );
   }
 }
