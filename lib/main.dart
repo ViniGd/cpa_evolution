@@ -1,5 +1,7 @@
 import 'package:cpa_evolution/screens/home.dart';
 import 'package:cpa_evolution/screens/professores_aval.dart';
+import 'package:cpa_evolution/screens/teste.dart';
+import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: Professores_aval(),
+      home: Home(),
     );
   }
 }

@@ -4,8 +4,16 @@ import 'package:cpa_evolution/widgets/estrutura/rodape.dart';
 import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+
+  bool logado = false;
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +147,7 @@ class Login extends StatelessWidget {
                       Vazio(50,0),
                       GestureDetector(
                         onTap: () {
-                          print("funfou");
+                          print(logado);
                         },
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(60, 10, 60, 10),
