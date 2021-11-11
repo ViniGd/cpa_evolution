@@ -3,6 +3,8 @@ import 'package:cpa_evolution/widgets/estrutura/rodape.dart';
 import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
 import 'package:cpa_evolution/widgets/social/resumo.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Materias extends StatefulWidget {
   const Materias({Key? key}) : super(key: key);
@@ -33,6 +35,13 @@ class _MateriasState extends State<Materias> {
   ];
   int i = 0;
 
+  String id ="";
+  Future<void> novo_baralho() async{
+    var response = await http.get(Uri.parse("http://26.138.176.209:4040/users"));
+    var json = jsonDecode(response.body);
+    print(json);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +70,7 @@ class _MateriasState extends State<Materias> {
                     ),
                   ),
                   Container(
-                    height: 80*5.5,
+                    height: MediaQuery.of(context).size.height*0.4,
                     width: MediaQuery.of(context).size.width * 0.7,
                     child: ListView.builder(
                       itemCount: itens.length,
@@ -71,7 +80,7 @@ class _MateriasState extends State<Materias> {
                             title: Resumo(
                               itens[index][i][0].toString(),
                               itens[index][i][1].toString(),
-                              itens[index][i][2].toString(),
+
                             ),
                           );
                         } catch (e) {
@@ -79,7 +88,7 @@ class _MateriasState extends State<Materias> {
                             title: Resumo(
                               "",
                               "",
-                              "",
+
                             ),
                           );
                         }
@@ -96,6 +105,7 @@ class _MateriasState extends State<Materias> {
 
                             }else{
                               i = i-1;
+                              novo_baralho();
                             }
 
                           });

@@ -6,6 +6,7 @@ import 'package:cpa_evolution/widgets/social/score.dart';
 import 'package:cpa_evolution/widgets/social/titulo.dart';
 import 'package:cpa_evolution/widgets/texto.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Professores_aval extends StatefulWidget {
   const Professores_aval({Key? key}) : super(key: key);
@@ -63,7 +64,7 @@ class _Professores_avalState extends State<Professores_aval> {
                   visible: true,
                   child: Container(
                       width: MediaQuery.of(context).size.width * largura,
-                      height: 200,
+                      height: 300,
                       decoration: const BoxDecoration(
                         color: Color(0xff004684),
                         borderRadius: BorderRadius.all(
@@ -72,21 +73,24 @@ class _Professores_avalState extends State<Professores_aval> {
                       ),
                       child:Column(
                         children: [
-                          Text("Deixe sua avaliação", style: TextStyle(fontSize: 30, color: Colors.white),),
-                          Row(children: [
+                          Text("\nDeixe sua avaliação\n", style: TextStyle(fontSize: 30, color: Colors.white),),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
 
                             Container(
-                              width: 300,
-                              height: 200,
+                              width: MediaQuery.of(context).size.width * (largura-0.1),
                               padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
                               child: TextFormField(
+                                maxLines: 3,
+                                maxLength: 200,
                                 keyboardType: TextInputType.multiline,
                                 style: const TextStyle(
                                 fontFamily: 'balsamiq',
                                 fontSize: 15,
                               ),
                                 decoration: const InputDecoration(
-                                  hintText: "Usuario",
+                                  hintText: "Avaliação",
                                   filled: true,
                                   fillColor: Color(0xffffffff),
                                   enabledBorder: OutlineInputBorder(
@@ -112,40 +116,62 @@ class _Professores_avalState extends State<Professores_aval> {
                                   ),),),
                             ),
 
-                            Container(
-                              width: 80,
-                              height: 50,
-                              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                              margin: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Color(0xff4DA735),width: 3),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
 
-                              ),
+                              children: [
+                                Text("Score : ", style: TextStyle(fontSize: 20,color: Colors.white),),
+                                Container(
+                                  width: 80,
+                                  height: 50,
+                                  margin: EdgeInsets.fromLTRB(5, 2, 0, 0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: Color(0xff4DA735),width: 3),
 
-                              child: DropdownButton<String>(
-                                value: dropdownValue,
-                                icon: const Icon(Icons.arrow_downward),
-                                iconSize: 20,
-                                elevation: 16,
-                                style: const TextStyle(),
-                                underline: Container(
-                                  height: 0,
+                                  ),
+
+                                  child: DropdownButton<String>(
+                                    value: dropdownValue,
+                                    icon: const Icon(Icons.arrow_downward),
+                                    iconSize: 20,
+                                    elevation: 16,
+                                    style: const TextStyle(),
+                                    underline: Container(
+                                      height: 0,
+                                    ),
+                                    onChanged: (String? newValue) {
+                                      setState(() {
+                                        dropdownValue = newValue!;
+                                      });
+                                    },
+                                    items: <String>['0','1','2','3','4','5','6','7','8','9','10']
+                                        .map<DropdownMenuItem<String>>((String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    }).toList(),
+                                  ),
                                 ),
-                                onChanged: (String? newValue) {
-                                  setState(() {
-                                    dropdownValue = newValue!;
-                                  });
-                                },
-                                items: <String>['0','1','2','3','4','5','6','7','8','9','10']
-                                    .map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                              ),
+                                GestureDetector(
+                                  onTap: (){},
+                                  child: Container(
+                                    margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+
+                                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 10),
+                                    height: 50-fonte_fix*2,
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xff4DA735),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10),
+                                      ),
+                                    ),
+                                    child: Text("Enviar", style: TextStyle(color: Colors.white, fontSize: 20-fonte_fix*1.5,),),),
+                                ),
+
+                              ],
                             ),
 
                           ],),
