@@ -1,6 +1,6 @@
 import 'package:cpa_evolution/screens/home.dart';
+import 'package:cpa_evolution/screens/materias_aval.dart';
 import 'package:cpa_evolution/screens/professores_aval.dart';
-import 'package:cpa_evolution/screens/teste.dart';
 import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: Materias_aval(),
+
     );
   }
 }

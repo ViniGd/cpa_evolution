@@ -31,7 +31,7 @@ class _ProfessoresState extends State<Professores> {
   int i = 0;
 
   String id ="";
-  Future<void> novo_baralho() async{
+  Future<void> pegar_professores() async{
     var response = await http.get(Uri.parse("http://26.138.176.209:4040/users"));
     var json = jsonDecode(response.body);
     var j = 0;
@@ -60,7 +60,7 @@ class _ProfessoresState extends State<Professores> {
 
   @override
   void initState() {
-    novo_baralho().then((value){
+    pegar_professores().then((value){
       print('Async done');
     });
     super.initState();
