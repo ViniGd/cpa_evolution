@@ -1,9 +1,12 @@
+import 'package:cpa_evolution/store/log.store.dart';
 import 'package:cpa_evolution/widgets/bandeira.dart';
 import 'package:cpa_evolution/widgets/estrutura/rodape.dart';
 import 'package:cpa_evolution/widgets/texto.dart';
 import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
 import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:cpa_evolution/variaveis.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -14,6 +17,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   double fonte_fix = 0;
+  LogStore store = LogStore();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

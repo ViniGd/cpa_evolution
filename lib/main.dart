@@ -1,6 +1,6 @@
 import 'package:cpa_evolution/screens/home.dart';
 import 'package:cpa_evolution/screens/professores_aval.dart';
-import 'package:cpa_evolution/screens/teste.dart';
+import 'package:cpa_evolution/testes%20do%20vini(ignora)/teste.dart';
 import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:flutter/material.dart';
 

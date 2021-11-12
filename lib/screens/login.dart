@@ -3,6 +3,8 @@ import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:cpa_evolution/widgets/estrutura/rodape.dart';
 import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
 import 'package:flutter/material.dart';
+import 'package:cpa_evolution/store/log.store.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
 
-  bool logado = false;
+  LogStore store = LogStore();
 
   @override
   Widget build(BuildContext context) {
@@ -146,9 +148,7 @@ class _LoginState extends State<Login> {
                           child: const Text("Não tem uma conta? clique aqui e cadastre-se",style: TextStyle(fontSize: 20,color: Colors.white),)),
                       Vazio(50,0),
                       GestureDetector(
-                        onTap: () {
-                          print(logado);
-                        },
+                        onTap:(){store.incrementar();},
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(60, 10, 60, 10),
                           height: 60,
@@ -173,6 +173,8 @@ class _LoginState extends State<Login> {
               ],
             ),
           ),
+          
+
           Rodape(),
         ],
       ),
