@@ -2,11 +2,11 @@ import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
 import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:cpa_evolution/widgets/estrutura/rodape.dart';
 import 'package:cpa_evolution/widgets/social/avaliacao.dart';
-import 'package:cpa_evolution/widgets/social/score.dart';
 import 'package:cpa_evolution/widgets/social/titulo.dart';
-import 'package:cpa_evolution/widgets/texto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Professores_aval extends StatefulWidget {
   const Professores_aval({Key? key}) : super(key: key);
@@ -19,20 +19,55 @@ class _Professores_avalState extends State<Professores_aval> {
   double fonte_fix = 0;
   var itens = [
     [
-      ["ETE-404 ", "Teste 1", "123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"],
-      ["ETE-505", "Teste 2", "1"]
+
     ],
     [
-      ["ETE-505", "Teste 2", "1"]
+
     ],
     [
-      ["ETE-305", "Teste 3", "4"]
+
     ],
   ];
 
   int i = 0;
   double largura = 0.48;
   String dropdownValue = '0';
+
+  Future<void> pegar_aval_professor() async{
+    var response = await http.get(Uri.parse("http://26.138.176.209:4040/users/249248/review"));
+    var json = jsonDecode(response.body);
+    var j = 0;
+    setState(() {
+      for( var i = 0 ; i < json.length; i++ ){
+        try {
+
+            if(j < 3){
+              itens[j].add([json[i]["reviewerName"],json[i]["score"],json[i]["feedback"]]);
+              j = j+1;
+            }else{
+              j=0;
+              itens[j].add([json[i]["reviewerName"],json[i]["score"],json[i]["feedback"]]);
+            }
+
+
+        } catch(e) {
+          break;
+        }
+        print(itens);
+      }
+    });
+
+
+  }
+
+  @override
+  void initState() {
+    pegar_aval_professor().then((value){
+      print('Async done');
+    });
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {

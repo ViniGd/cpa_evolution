@@ -33,7 +33,7 @@ class _AvaliacaoState extends State<Avaliacao> {
         child: Center(
             child: Container(
                 width: MediaQuery.of(context).size.width * largura,
-                height: 200,
+                height: widget.nome == "" ? 0 :200,
                 decoration: BoxDecoration(
                   color: Color(0xff004684),
                   borderRadius: BorderRadius.all(
