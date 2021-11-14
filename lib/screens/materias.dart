@@ -5,6 +5,7 @@ import 'package:cpa_evolution/widgets/social/resumo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:cpa_evolution/variaveis.dart';
 
 class Materias extends StatefulWidget {
   const Materias({Key? key}) : super(key: key);

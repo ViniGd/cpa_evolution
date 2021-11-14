@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:cpa_evolution/store/log.store.dart';
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
+import 'package:cpa_evolution/variaveis.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -33,7 +34,10 @@ class _LoginState extends State<Login> {
 
     var response = await http.post(Uri.parse("http://26.138.176.209:4040/login"),body:body,);
     var jaison = jsonDecode(response.body);
-    //token = "Bearer " + jaison["token"];
+    var token = "Bearer " + jaison["token"];
+
+    tokeng = token;
+
   }
 
 
