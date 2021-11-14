@@ -4,7 +4,6 @@ import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:cpa_evolution/widgets/estrutura/rodape.dart';
 import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
 import 'package:flutter/material.dart';
-import 'package:cpa_evolution/store/log.store.dart';
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 import 'package:cpa_evolution/variaveis.dart';
@@ -17,8 +16,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-
-  LogStore store = LogStore();
 
   Future<void> login(usuario,senha) async{
 
@@ -34,13 +31,42 @@ class _LoginState extends State<Login> {
 
     var response = await http.post(Uri.parse("http://26.138.176.209:4040/login"),body:body,);
     var jaison = jsonDecode(response.body);
-    var token = "Bearer " + jaison["token"];
+    if(jaison == ""){
+      setState(() {
+        pop_up("Usuario ou senha incorreta");
+      });
+    }else{
+      var token = "Bearer " + jaison["token"];
+      token_global = token;
+      pop_up("Login realizado com sucesso");
 
-    tokeng = token;
+    }
+
 
   }
 
+  String status = "";
 
+  void pop_up(String status){
+    var pop_up_var = SnackBar(
+      content: Text(status),
+      action: SnackBarAction(
+        label: 'Fechar',
+        onPressed: () {},
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(pop_up_var);
+  }
+
+  final usuario_controller = TextEditingController();
+  final senha_controller = TextEditingController();
+
+  @override
+  void dispose() {
+    usuario_controller.dispose();
+    senha_controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +74,14 @@ class _LoginState extends State<Login> {
       body: Column(
         children: [
           Menu("login"),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height * 0.85,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.fromLTRB(0, 50, 0, 20),
-                  child: Text(
+                  margin: const EdgeInsets.fromLTRB(0, 50, 0, 20),
+                  child: const Text(
                     "Login",
                     style: TextStyle(fontSize: 80, color: Color(0xff004684)),
                   ),
@@ -69,20 +95,22 @@ class _LoginState extends State<Login> {
                       Radius.circular(50),
                     ),
                   ),
-                  margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                  margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
-                      Container(
+                      SizedBox(
                         width: 300,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Usuario", style: TextStyle(fontSize: 30,color: Colors.white),),
+                            Text("Usuario", style: const TextStyle(fontSize: 30,color: Colors.white),),
                             Container(
-                              padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                              child: TextFormField(style: const TextStyle(
+                              padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                              child: TextFormField(
+                                controller: usuario_controller,
+                                style: const TextStyle(
                                 fontFamily: 'balsamiq',
                                 fontSize: 15,
                               ),
@@ -116,15 +144,17 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       Vazio(50,0),
-                      Container(
+                      SizedBox(
                         width: 300,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Senha", style: TextStyle(fontSize: 30,color: Colors.white),),
+                            const Text("Senha", style: TextStyle(fontSize: 30,color: Colors.white),),
                             Container(
-                              padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                              child: TextFormField(style: const TextStyle(
+                              padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                              child: TextFormField(
+                                controller: senha_controller,
+                                style: const TextStyle(
                                 fontFamily: 'balsamiq',
                                 fontSize: 15,
                               ),
@@ -164,16 +194,16 @@ class _LoginState extends State<Login> {
                           Navigator.push(
                             context,
                             PageRouteBuilder(
-                              pageBuilder: (c, a1, a2) => Cadastro(),
+                              pageBuilder: (c, a1, a2) => const Cadastro(),
                               transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
-                              transitionDuration: Duration(milliseconds: 100),
+                              transitionDuration: const Duration(milliseconds: 100),
                             ),
                           );
                         },
                           child: const Text("Não tem uma conta? clique aqui e cadastre-se",style: TextStyle(fontSize: 20,color: Colors.white),)),
                       Vazio(50,0),
                       GestureDetector(
-                        onTap:(){store.incrementar();},
+                        onTap:(){login(usuario_controller.text,senha_controller.text);},
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(60, 10, 60, 10),
                           height: 60,
@@ -200,9 +230,10 @@ class _LoginState extends State<Login> {
           ),
           
 
-          Rodape(),
+          const Rodape(),
         ],
       ),
     );
   }
+
 }

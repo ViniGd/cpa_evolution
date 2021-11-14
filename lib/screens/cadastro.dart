@@ -14,8 +14,8 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
-  String dropdownValue = 'Aluno';
 
+  String dropdownValue = 'Aluno';
 
   Future<void> cadastro(usuario,senha,ra,nome,role) async{
 
@@ -33,7 +33,38 @@ class _CadastroState extends State<Cadastro> {
     var body = json.encode(data);
 
     var response = await http.post(Uri.parse("http://26.138.176.209:4040/register"),body:body,);
-    print(response.body);
+    setState(() {
+      pop_up("Conta cadastrada com sucesso");
+    });
+  }
+
+  String status = "";
+
+  void pop_up(String status){
+    var pop_up_var = SnackBar(
+      content: Text(status),
+      action: SnackBarAction(
+        label: 'Fechar',
+        onPressed: () {},
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(pop_up_var);
+  }
+
+  final usuario_controller = TextEditingController();
+  final senha_controller = TextEditingController();
+  final confirmar_senha_controller = TextEditingController();
+  final ra_controller = TextEditingController();
+  final nome_controller = TextEditingController();
+
+  @override
+  void dispose() {
+    usuario_controller.dispose();
+    senha_controller.dispose();
+    confirmar_senha_controller.dispose();
+    ra_controller.dispose();
+    nome_controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -81,7 +112,9 @@ class _CadastroState extends State<Cadastro> {
                                   Text("Usuario", style: TextStyle(fontSize: 30,color: Colors.white),),
                                   Container(
                                     padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                    child: TextFormField(style: const TextStyle(
+                                    child: TextFormField(
+                                      controller: usuario_controller,
+                                      style: const TextStyle(
                                       fontFamily: 'balsamiq',
                                       fontSize: 15,
                                     ),
@@ -122,7 +155,9 @@ class _CadastroState extends State<Cadastro> {
                                   Text("R.A", style: TextStyle(fontSize: 30,color: Colors.white),),
                                   Container(
                                     padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                    child: TextFormField(style: const TextStyle(
+                                    child: TextFormField(
+                                      controller: ra_controller,
+                                      style: const TextStyle(
                                       fontFamily: 'balsamiq',
                                       fontSize: 15,
                                     ),
@@ -172,7 +207,9 @@ class _CadastroState extends State<Cadastro> {
                                   Text("Nome", style: TextStyle(fontSize: 30,color: Colors.white),),
                                   Container(
                                     padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                    child: TextFormField(style: const TextStyle(
+                                    child: TextFormField(
+                                      controller: nome_controller,
+                                      style: const TextStyle(
                                       fontFamily: 'balsamiq',
                                       fontSize: 15,
                                     ),
@@ -267,7 +304,9 @@ class _CadastroState extends State<Cadastro> {
                                   Text("Senha", style: TextStyle(fontSize: 30,color: Colors.white),),
                                   Container(
                                     padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                    child: TextFormField(style: const TextStyle(
+                                    child: TextFormField(
+                                      controller: senha_controller,
+                                      style: const TextStyle(
                                       fontFamily: 'balsamiq',
                                       fontSize: 15,
                                     ),
@@ -308,7 +347,9 @@ class _CadastroState extends State<Cadastro> {
                                   Text("Confirmar senha", style: TextStyle(fontSize: 30,color: Colors.white),),
                                   Container(
                                     padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                    child: TextFormField(style: const TextStyle(
+                                    child: TextFormField(
+                                      controller: confirmar_senha_controller,
+                                      style: const TextStyle(
                                       fontFamily: 'balsamiq',
                                       fontSize: 15,
                                     ),
@@ -347,7 +388,15 @@ class _CadastroState extends State<Cadastro> {
                       Vazio(50,0),
                       GestureDetector(
                         onTap: () {
-                          print("funfou");
+                          if(senha_controller.text == confirmar_senha_controller.text){
+                            cadastro(usuario_controller.text,senha_controller.text,ra_controller.text,nome_controller.text,dropdownValue);
+                          }else{
+                            setState(() {
+
+                              pop_up("confirmação de senha incorreta");
+                            });
+
+                          }
                         },
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(60, 10, 60, 10),
@@ -370,6 +419,7 @@ class _CadastroState extends State<Cadastro> {
                     ],
                   ),
                 ),
+
               ],
             ),
           ),

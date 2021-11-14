@@ -1,4 +1,1 @@
-
-
-String log1 = 'off';
-String tokeng = 'nulltoken';
+String token_global = "";

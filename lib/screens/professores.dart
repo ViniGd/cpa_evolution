@@ -1,12 +1,9 @@
-import 'package:cpa_evolution/screens/professores_aval.dart';
 import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:cpa_evolution/widgets/estrutura/rodape.dart';
-import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
 import 'package:cpa_evolution/widgets/social/resumo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:cpa_evolution/variaveis.dart';
 
 class Professores extends StatefulWidget {
   const Professores({Key? key}) : super(key: key);
@@ -16,6 +13,7 @@ class Professores extends StatefulWidget {
 }
 
 class _ProfessoresState extends State<Professores> {
+
   double fonte_fix =0;
   var itens = [
     [
@@ -53,6 +51,7 @@ class _ProfessoresState extends State<Professores> {
           break;
         }
         print(itens);
+
       }
     });
 
@@ -61,6 +60,7 @@ class _ProfessoresState extends State<Professores> {
 
   @override
   void initState() {
+
     pegar_professores().then((value){
       print('Async done');
     });

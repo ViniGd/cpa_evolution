@@ -5,6 +5,7 @@ import 'package:cpa_evolution/widgets/social/avaliacao.dart';
 import 'package:cpa_evolution/widgets/social/titulo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:cpa_evolution/variaveis.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -58,8 +59,19 @@ class _Materias_avalState extends State<Materias_aval> {
         print(itens);
       }
     });
+  }
 
+  String status = "";
 
+  void pop_up(String status){
+    var pop_up_var = SnackBar(
+      content: Text(status),
+      action: SnackBarAction(
+        label: 'Fechar',
+        onPressed: () {},
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(pop_up_var);
   }
 
   @override
@@ -73,7 +85,7 @@ class _Materias_avalState extends State<Materias_aval> {
   Future<void> postar_aval(score,aval,token) async{
 
     Map data = {
-      'score': score,
+      'score': int.parse(score),
       'feedback' : aval,
     };
     print("aqui foi");
@@ -82,6 +94,15 @@ class _Materias_avalState extends State<Materias_aval> {
 
     var response = await http.post(Uri.parse("http://26.138.176.209:4040/subjects/${widget.codigo}/review"),body:body,headers: {"Authorization":token});
     print(response.body);
+    pop_up("Avaliação publicada");
+  }
+
+  final aval_controller = TextEditingController();
+
+  @override
+  void dispose() {
+    aval_controller.dispose();
+    super.dispose();
   }
 
 
@@ -112,7 +133,7 @@ class _Materias_avalState extends State<Materias_aval> {
                   ),
                 ),
                 Visibility(
-                  visible: true,
+                  visible: token_global == "" ? false : true,
                   child: Container(
                     width: MediaQuery.of(context).size.width * largura,
                     height: 300,
@@ -134,6 +155,7 @@ class _Materias_avalState extends State<Materias_aval> {
                               padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
                               child: TextFormField(
                                 maxLines: 3,
+                                controller: aval_controller,
                                 maxLength: 200,
                                 keyboardType: TextInputType.multiline,
                                 style: const TextStyle(
@@ -207,7 +229,9 @@ class _Materias_avalState extends State<Materias_aval> {
                                   ),
                                 ),
                                 GestureDetector(
-                                  onTap: (){},
+                                  onTap: (){
+                                    postar_aval(dropdownValue, aval_controller.text, token_global);
+                                  },
                                   child: Container(
                                     margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
 
