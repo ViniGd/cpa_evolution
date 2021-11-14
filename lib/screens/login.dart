@@ -1,10 +1,12 @@
+import 'dart:convert';
 import 'package:cpa_evolution/screens/cadastro.dart';
 import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:cpa_evolution/widgets/estrutura/rodape.dart';
 import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
 import 'package:flutter/material.dart';
 import 'package:cpa_evolution/store/log.store.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:crypto/crypto.dart';
+import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -16,6 +18,23 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
 
   LogStore store = LogStore();
+
+  Future<void> login(usuario,senha) async{
+
+    var bytes = utf8.encode(senha);
+    var digest = sha256.convert(bytes);
+
+    Map data = {
+      'username': usuario,
+      'password' : digest.toString(),
+    };
+
+    var body = json.encode(data);
+
+    var response = await http.post(Uri.parse("http://26.138.176.209:4040/login"),body:body,);
+    var jaison = jsonDecode(response.body);
+    //token = "Bearer " + jaison["token"];
+  }
 
 
 

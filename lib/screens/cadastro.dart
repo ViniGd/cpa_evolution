@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'package:cpa_evolution/widgets/estrutura/menu.dart';
 import 'package:cpa_evolution/widgets/estrutura/rodape.dart';
 import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:crypto/crypto.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
@@ -12,6 +15,27 @@ class Cadastro extends StatefulWidget {
 
 class _CadastroState extends State<Cadastro> {
   String dropdownValue = 'Aluno';
+
+
+  Future<void> cadastro(usuario,senha,ra,nome,role) async{
+
+    var bytes = utf8.encode(senha);
+    var digest = sha256.convert(bytes);
+
+    Map data = {
+      'username': usuario,
+      'password' : digest.toString(),
+      "code" : ra,
+      "fullName" : nome,
+      "roleId" : role,
+    };
+
+    var body = json.encode(data);
+
+    var response = await http.post(Uri.parse("http://26.138.176.209:4040/register"),body:body,);
+    print(response.body);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +49,7 @@ class _CadastroState extends State<Cadastro> {
               children: [
                 Container(
                   margin: EdgeInsets.fromLTRB(0, 50, 0, 20),
-                  child: Text(
+                  child: const Text(
                     "Cadastro",
                     style: TextStyle(fontSize: 80, color: Color(0xff004684)),
                   ),

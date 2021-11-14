@@ -1,11 +1,14 @@
+import 'package:cpa_evolution/screens/materias_aval.dart';
+import 'package:cpa_evolution/screens/professores_aval.dart';
 import 'package:cpa_evolution/widgets/estrutura/vazio.dart';
 import 'package:flutter/material.dart';
 
 class Resumo extends StatefulWidget {
   String codigo;
   String nome;
+  String role;
 
-  Resumo(this.codigo, this.nome, {Key? key}) : super(key: key);
+  Resumo(this.codigo, this.nome, this.role, {Key? key}) : super(key: key);
 
   @override
   State<Resumo> createState() => _ResumoState();
@@ -32,31 +35,57 @@ class _ResumoState extends State<Resumo> {
       return Visibility(
         visible: widget.nome == "" ? false : true,
         child: Center(
-            child: Container(
+            child: GestureDetector(
+              onTap: (){
+                if(widget.role == "professores"){
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (c, a1, a2) => Professores_aval(widget.codigo),
+                      transitionsBuilder: (c, anim, a2, child) =>
+                          FadeTransition(opacity: anim, child: child),
+                      transitionDuration: Duration(milliseconds: 100),
+                    ),
+                  );
+                }else{
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (c, a1, a2) => Materias_aval(widget.codigo),
+                      transitionsBuilder: (c, anim, a2, child) =>
+                          FadeTransition(opacity: anim, child: child),
+                      transitionDuration: Duration(milliseconds: 100),
+                    ),
+                  );
+                }
+
+              },
+              child: Container(
           width: MediaQuery.of(context).size.width * largura,
           height: MediaQuery.of(context).size.height * 0.07,
           decoration: const BoxDecoration(
-            color: Color(0xff004684),
-            borderRadius: BorderRadius.all(
-              Radius.circular(15),
-            ),
+              color: Color(0xff004684),
+              borderRadius: BorderRadius.all(
+                Radius.circular(15),
+              ),
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(
-                child: Text(
-                  "${widget.nome}",
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(
+                  child: Text(
+                    "${widget.nome}",
 
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: fonte,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: fonte,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
           ),
-        )),
+        ),
+            )),
       );
     });
   }

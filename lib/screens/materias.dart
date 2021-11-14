@@ -103,6 +103,7 @@ class _MateriasState extends State<Materias> {
                                 title: Resumo(
                                   itens[index][i][0].toString(),
                                   itens[index][i][1].toString(),
+                                  "materias"
                                 ),
                               );
                             } catch (e) {
@@ -110,6 +111,9 @@ class _MateriasState extends State<Materias> {
                                 title: Resumo(
                                   "",
                                   "",
+                                  "materias",
+
+
                                 ),
                               );
                             }

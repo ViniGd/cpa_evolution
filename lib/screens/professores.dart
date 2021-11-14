@@ -104,6 +104,7 @@ class _ProfessoresState extends State<Professores> {
                                 title: Resumo(
                                   itens[index][i][0].toString(),
                                   itens[index][i][1].toString(),
+                                    "professores",
                                 ),
                               );
                             } catch (e) {
@@ -111,6 +112,7 @@ class _ProfessoresState extends State<Professores> {
                                 title: Resumo(
                                   "",
                                   "",
+                                  "professores",
                                 ),
                               );
                             }

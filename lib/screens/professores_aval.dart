@@ -5,11 +5,15 @@ import 'package:cpa_evolution/widgets/social/avaliacao.dart';
 import 'package:cpa_evolution/widgets/social/titulo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:crypto/crypto.dart';
+import 'package:http/http.dart' as http;
 
 class Professores_aval extends StatefulWidget {
-  const Professores_aval({Key? key}) : super(key: key);
+
+  String codigo;
+
+  Professores_aval(this.codigo, {Key? key}) : super(key: key);
 
   @override
   State<Professores_aval> createState() => _Professores_avalState();
@@ -34,7 +38,8 @@ class _Professores_avalState extends State<Professores_aval> {
   String dropdownValue = '0';
 
   Future<void> pegar_aval_professor() async{
-    var response = await http.get(Uri.parse("http://26.138.176.209:4040/users/249248/review"));
+
+    var response = await http.get(Uri.parse("http://26.138.176.209:4040/users/${widget.codigo}/review"));
     var json = jsonDecode(response.body);
     var j = 0;
     setState(() {
@@ -67,6 +72,24 @@ class _Professores_avalState extends State<Professores_aval> {
     });
     super.initState();
   }
+
+
+  Future<void> postar_aval(score,aval,token) async{
+
+    Map data = {
+      'score': score,
+      'feedback' : aval,
+    };
+    print("aqui foi");
+
+    var body = json.encode(data);
+
+    var response = await http.post(Uri.parse("http://26.138.176.209:4040/users/${widget.codigo}/review"),body:body,headers: {"Authorization":token});
+    print(response.body);
+  }
+
+
+
 
 
   @override

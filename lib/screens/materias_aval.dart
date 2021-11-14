@@ -9,7 +9,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Materias_aval extends StatefulWidget {
-  const Materias_aval({Key? key}) : super(key: key);
+  String codigo;
+
+  Materias_aval(this.codigo, {Key? key}) : super(key: key);
 
   @override
   State<Materias_aval> createState() => _Materias_avalState();
@@ -34,7 +36,7 @@ class _Materias_avalState extends State<Materias_aval> {
   String dropdownValue = '0';
 
   Future<void> pegar_aval_materias() async{
-    var response = await http.get(Uri.parse("http://26.138.176.209:4040/subjects/ECM251/review"));
+    var response = await http.get(Uri.parse("http://26.138.176.209:4040/subjects/${widget.codigo}/review"));
     var json = jsonDecode(response.body);
     var j = 0;
     setState(() {
@@ -66,6 +68,20 @@ class _Materias_avalState extends State<Materias_aval> {
       print('Async done');
     });
     super.initState();
+  }
+
+  Future<void> postar_aval(score,aval,token) async{
+
+    Map data = {
+      'score': score,
+      'feedback' : aval,
+    };
+    print("aqui foi");
+
+    var body = json.encode(data);
+
+    var response = await http.post(Uri.parse("http://26.138.176.209:4040/subjects/${widget.codigo}/review"),body:body,headers: {"Authorization":token});
+    print(response.body);
   }
 
 
