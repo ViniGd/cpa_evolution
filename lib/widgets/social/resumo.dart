@@ -25,7 +25,7 @@ class _ResumoState extends State<Resumo> {
     return LayoutBuilder(
       builder: (context, constraints) {
       var parentWidth = constraints.maxWidth;
-      if(parentWidth < 700){
+      if(parentWidth < 750){
         fonte = 14;
         largura = 0.8;
       }else{
@@ -41,7 +41,7 @@ class _ResumoState extends State<Resumo> {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      pageBuilder: (c, a1, a2) => Professores_aval(widget.codigo),
+                      pageBuilder: (c, a1, a2) => Professores_aval(widget.codigo,widget.nome),
                       transitionsBuilder: (c, anim, a2, child) =>
                           FadeTransition(opacity: anim, child: child),
                       transitionDuration: Duration(milliseconds: 100),
@@ -51,7 +51,7 @@ class _ResumoState extends State<Resumo> {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      pageBuilder: (c, a1, a2) => Materias_aval(widget.codigo),
+                      pageBuilder: (c, a1, a2) => Materias_aval(widget.codigo,widget.nome),
                       transitionsBuilder: (c, anim, a2, child) =>
                           FadeTransition(opacity: anim, child: child),
                       transitionDuration: Duration(milliseconds: 100),

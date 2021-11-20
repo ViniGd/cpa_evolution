@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:crypto/crypto.dart';
 
+import 'login.dart';
+
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
 
@@ -27,15 +29,29 @@ class _CadastroState extends State<Cadastro> {
       'password' : digest.toString(),
       "code" : ra,
       "fullName" : nome,
-      "roleId" : role,
+      "roleId" : role == "Aluno"? 1 : 2,
     };
 
     var body = json.encode(data);
 
     var response = await http.post(Uri.parse("http://26.138.176.209:4040/register"),body:body,);
     setState(() {
-      pop_up("Conta cadastrada com sucesso");
+      pop_up("Conta cadastrada com sucesso, realize seu login!");
     });
+
+    Future.delayed(Duration(milliseconds: 2000), () {
+      Navigator.push(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (c, a1, a2) => Login(),
+          transitionsBuilder: (c, anim, a2, child) =>
+              FadeTransition(opacity: anim, child: child),
+          transitionDuration: Duration(milliseconds: 100),
+        ),
+      );
+    });
+
+
   }
 
   String status = "";

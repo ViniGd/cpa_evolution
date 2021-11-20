@@ -84,69 +84,73 @@ class _ProfessoresState extends State<Professores> {
                 return Container(
                   height: MediaQuery.of(context).size.height * 0.85,
                   width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  child: ListView(
                     children: [
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(0, 50, 0, 20),
-                        child: Text(
-                          "Professores",
-                          style: TextStyle(fontSize: 80-fonte_fix*2  , color: const Color(0xff004684)),
-                        ),
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height*0.4,
-                        width: MediaQuery.of(context).size.width * 0.7,
-                        child: ListView.builder(
-                          itemCount: itens.length,
-                          itemBuilder: (context, index) {
-                            try {
-                              return ListTile(
-                                title: Resumo(
-                                  itens[index][i][0].toString(),
-                                  itens[index][i][1].toString(),
-                                    "professores",
-                                ),
-                              );
-                            } catch (e) {
-                              return ListTile(
-                                title: Resumo(
-                                  "",
-                                  "",
-                                  "professores",
-                                ),
-                              );
-                            }
-                          },
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          GestureDetector(
-                            onTap: (){
-                              setState(() {
-                                if(i == 0){
-
-                                }else{
-                                  i = i-1;
-                                }
-
-                              });
-                            },
-                            child: const Icon(Icons.arrow_left_rounded,size: 100, color: Color(0xff004684)),
+                          Container(
+                            margin: const EdgeInsets.fromLTRB(0, 50, 0, 20),
+                            child: Text(
+                              "Professores",
+                              style: TextStyle(fontSize: 80-fonte_fix*2  , color: const Color(0xff004684)),
+                            ),
                           ),
-                          GestureDetector(
-                            onTap: (){
-                              setState(() {
-                                if(i == itens[0].length-1){
-
-                                }else{
-                                  i = i+1;
+                          Container(
+                            height: MediaQuery.of(context).size.height*0.4,
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: ListView.builder(
+                              itemCount: itens.length,
+                              itemBuilder: (context, index) {
+                                try {
+                                  return ListTile(
+                                    title: Resumo(
+                                      itens[index][i][0].toString(),
+                                      itens[index][i][1].toString(),
+                                        "professores",
+                                    ),
+                                  );
+                                } catch (e) {
+                                  return ListTile(
+                                    title: Resumo(
+                                      "",
+                                      "",
+                                      "professores",
+                                    ),
+                                  );
                                 }
-                              });
-                            },
-                            child: const Icon(Icons.arrow_right_rounded,size: 100, color: Color(0xff004684)),
+                              },
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              GestureDetector(
+                                onTap: (){
+                                  setState(() {
+                                    if(i == 0){
+
+                                    }else{
+                                      i = i-1;
+                                    }
+
+                                  });
+                                },
+                                child: const Icon(Icons.arrow_left_rounded,size: 100, color: Color(0xff004684)),
+                              ),
+                              GestureDetector(
+                                onTap: (){
+                                  setState(() {
+                                    if(i == itens[0].length-1){
+
+                                    }else{
+                                      i = i+1;
+                                    }
+                                  });
+                                },
+                                child: const Icon(Icons.arrow_right_rounded,size: 100, color: Color(0xff004684)),
+                              ),
+                            ],
                           ),
                         ],
                       ),

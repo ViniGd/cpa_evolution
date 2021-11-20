@@ -39,7 +39,7 @@ class _BandeiraState extends State<Bandeira> {
               children: [
                 Text(
                   widget.titulo,
-                  style: TextStyle(color: Colors.white, fontSize: 60-fonte_fix*2.5,),),
+                  style: TextStyle(color: Colors.white, fontSize: 50-fonte_fix*2.5,),),
                 Vazio(30, 0),
                 Text(
                   widget.descricao,

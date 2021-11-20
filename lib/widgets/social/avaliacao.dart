@@ -22,8 +22,8 @@ class _AvaliacaoState extends State<Avaliacao> {
     return LayoutBuilder(builder: (context, constraints) {
       var parentWidth = constraints.maxWidth;
       if (parentWidth < 650) {
-        fonte_fix = 0;
-        largura = 0.9;
+        fonte_fix = 4;
+        largura = 0.95;
       } else {
         fonte_fix = 8;
         largura = 0.48;

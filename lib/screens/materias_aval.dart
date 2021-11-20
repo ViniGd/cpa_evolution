@@ -11,15 +11,19 @@ import 'dart:convert';
 
 class Materias_aval extends StatefulWidget {
   String codigo;
+  String nome;
 
-  Materias_aval(this.codigo, {Key? key}) : super(key: key);
+  Materias_aval(this.codigo,this.nome, {Key? key}) : super(key: key);
 
   @override
   State<Materias_aval> createState() => _Materias_avalState();
 }
 
 class _Materias_avalState extends State<Materias_aval> {
+
   double fonte_fix = 0;
+  int n = 3;
+
   var itens = [
     [
 
@@ -43,16 +47,15 @@ class _Materias_avalState extends State<Materias_aval> {
     setState(() {
       for( var i = 0 ; i < json.length; i++ ){
         try {
-
           if(j < 3){
             itens[j].add([json[i]["reviewerName"],json[i]["score"],json[i]["feedback"]]);
             j = j+1;
           }else{
+
             j=0;
             itens[j].add([json[i]["reviewerName"],json[i]["score"],json[i]["feedback"]]);
+
           }
-
-
         } catch(e) {
           break;
         }
@@ -113,10 +116,10 @@ class _Materias_avalState extends State<Materias_aval> {
         var parentWidth = constraints.maxWidth;
         if (parentWidth < 650) {
           fonte_fix = 6;
-          double largura = 0.90;
+          largura = 0.90;
         } else {
           fonte_fix = 0;
-          double largura = 0.48;
+          largura = 0.48;
         }
         return ListView(
           children: [
@@ -128,25 +131,25 @@ class _Materias_avalState extends State<Materias_aval> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Titulo("curso", "codigomat", "nomemat"),
+                      Titulo(widget.codigo, widget.nome,largura,fonte_fix),
                     ],
                   ),
                 ),
-                Visibility(
-                  visible: token_global == "" ? false : true,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * largura,
-                    height: 300,
-                    decoration: const BoxDecoration(
-                      color: Color(0xff004684),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20),
-                      ),
+                Container(
+                  width: MediaQuery.of(context).size.width * largura,
+                  height: token_global != "" ? 300 : 100,
+                  decoration: const BoxDecoration(
+                    color: Color(0xff004684),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
                     ),
-                    child:Column(
-                      children: [
-                        Text("\nDeixe sua avaliação\n", style: TextStyle(fontSize: 30, color: Colors.white),),
-                        Column(
+                  ),
+                  child:Column(
+                    children: [
+                      Text(token_global != "" ? "\nDeixe sua avaliação\n": "\nRegistre-se para avaliar", style: TextStyle(fontSize: 30 - fonte_fix*1.5, color: Colors.white),),
+                      Visibility(
+                        visible: token_global ==""? false : true,
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
 
@@ -250,19 +253,20 @@ class _Materias_avalState extends State<Materias_aval> {
                             ),
 
                           ],),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 Vazio(50, 0),
 
                 Container(
-                  height: 200 * 3.2,
-                  width: MediaQuery.of(context).size.width * 0.7,
                   child: ListView.builder(
+
+                    shrinkWrap: true,
                     itemCount: itens.length,
                     itemBuilder: (context, index) {
                       try {
+
                         return ListTile(
                           title: Avaliacao(
                             itens[index][i][0].toString(),
@@ -282,6 +286,7 @@ class _Materias_avalState extends State<Materias_aval> {
                     },
                   ),
                 ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -291,6 +296,7 @@ class _Materias_avalState extends State<Materias_aval> {
                           if (i == 0) {
                           } else {
                             i = i - 1;
+
                           }
                         });
                       },

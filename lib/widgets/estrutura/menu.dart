@@ -2,6 +2,7 @@ import 'package:cpa_evolution/screens/home.dart';
 import 'package:cpa_evolution/screens/login.dart';
 import 'package:cpa_evolution/screens/materias.dart';
 import 'package:cpa_evolution/screens/professores.dart';
+import 'package:cpa_evolution/variaveis.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -159,21 +160,37 @@ class _MenuState extends State<Menu> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder: (c, a1, a2) => Login(),
-                            transitionsBuilder: (c, anim, a2, child) =>
-                                FadeTransition(opacity: anim, child: child),
-                            transitionDuration: Duration(milliseconds: 100),
-                          ),
-                        );
+
+                        if(token_global == ""){
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder: (c, a1, a2) => Login(),
+                              transitionsBuilder: (c, anim, a2, child) =>
+                                  FadeTransition(opacity: anim, child: child),
+                              transitionDuration: Duration(milliseconds: 100),
+                            ),
+                          );
+                        }else{
+                          token_global = "";
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder: (c, a1, a2) => Home(),
+                              transitionsBuilder: (c, anim, a2, child) =>
+                                  FadeTransition(opacity: anim, child: child),
+                              transitionDuration: Duration(milliseconds: 100),
+                            ),
+                          );
+                        }
+
+
                       },
                       child: Container(
                         decoration: const BoxDecoration(
                           color: Color(0xff004684),
                         ),
-                        child: Text("Login",
+                        child: Text(token_global == "" ? "Login" : "Sair",
                             style: TextStyle(
                               color: loginBool
                                   ? const Color(0xff4DA735)
