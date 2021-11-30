@@ -31,6 +31,8 @@ class _ProfessoresState extends State<Professores> {
 
   String id ="";
   Future<void> pegar_professores() async{
+    // esta função realiza uma chamada na API que retorna todas os professores existentes,
+    // e realiza a inserção deles em uma lista que é lida por listview.builder para gerar a página em questão.
     var response = await http.get(Uri.parse("http://26.138.176.209:4040/users"));
     var json = jsonDecode(response.body);
     var j = 0;

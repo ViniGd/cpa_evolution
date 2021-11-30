@@ -30,6 +30,8 @@ class _MateriasState extends State<Materias> {
 
   String id ="";
   Future<void> pegar_materias() async{
+    // esta função realiza uma chamada na API que retorna todas as matérias existentes,
+    // e realiza a inserção delas em uma lista que é lida por listview.builder para gerar a página em questão.
     var response = await http.get(Uri.parse("http://26.138.176.209:4040/subjects"));
     var json = jsonDecode(response.body);
     var j = 0;

@@ -19,6 +19,11 @@ class _CadastroState extends State<Cadastro> {
   String dropdownValue = 'Aluno';
 
   Future<void> cadastro(usuario, senha, ra, nome, role) async {
+    //Esta função recebe as strings, usuario,senha,r.a,role,email, e envia uma
+    // chamada post para a API, se for sucedido o cadastro, é chamado a função
+    // pop_up, avisando que foi bem sucedido e ocorre o redirecionamento para
+    // a página login.
+
     var bytes = utf8.encode(senha);
     var digest = sha256.convert(bytes);
 
@@ -56,6 +61,8 @@ class _CadastroState extends State<Cadastro> {
   String status = "";
 
   void pop_up(String status) {
+    //Esta função recebe uma string, e ativa o widget toast na tela,
+    // apresentando a string inserida na função como uma mensagem.
     var pop_up_var = SnackBar(
       content: Text(status),
       action: SnackBarAction(

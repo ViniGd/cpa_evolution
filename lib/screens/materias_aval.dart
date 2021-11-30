@@ -41,6 +41,8 @@ class _Materias_avalState extends State<Materias_aval> {
   String dropdownValue = '0';
 
   Future<void> pegar_aval_materias() async{
+    // esta função realiza uma chamada na API para pegar todas as avaliações
+    // de determinada  matéria para serem buildadas por um listview.builder para gerar a página em questão.
     var response = await http.get(Uri.parse("http://26.138.176.209:4040/subjects/${widget.codigo}/review"));
     var json = jsonDecode(response.body);
     var j = 0;
@@ -67,6 +69,8 @@ class _Materias_avalState extends State<Materias_aval> {
   String status = "";
 
   void pop_up(String status){
+    //Esta função recebe uma string, e ativa o widget toast na tela,
+    // apresentando a string inserida na função como uma mensagem.
     var pop_up_var = SnackBar(
       content: Text(status),
       action: SnackBarAction(
@@ -86,6 +90,8 @@ class _Materias_avalState extends State<Materias_aval> {
   }
 
   Future<void> postar_aval(score,aval,token) async{
+    //Esta função realiza uma chamada post na API, enviando o token ativo,
+    // a avaliação, o score, e a o que/quem a avaliação se refere.
 
     Map data = {
       'score': int.parse(score),

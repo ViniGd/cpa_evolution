@@ -19,6 +19,11 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
 
   Future<void> login(usuario,senha) async{
+    //Esta função realiza uma chamada post para a API, enviando o usuario e a
+    // senha criptografada, após isso se for bem sucedido ela armazena o token
+    // de retorno, chama a função pop_up() para avisar do sucesso e redireciona
+    // para a landing page. Caso contrário ela chama a função pop_up() avisando
+    // de erro no login.
 
     var bytes = utf8.encode(senha);
     var digest = sha256.convert(bytes);
@@ -61,6 +66,8 @@ class _LoginState extends State<Login> {
   String status = "";
 
   void pop_up(String status){
+    //Esta função recebe uma string, e ativa o widget toast na tela,
+    // apresentando a string inserida na função como uma mensagem.
     var pop_up_var = SnackBar(
       content: Text(status),
       action: SnackBarAction(
