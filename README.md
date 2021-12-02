@@ -5,7 +5,7 @@
 <h5 align="center">Pedro Henrique Ferreira Dominichelli Fabris</h5>
 <h5 align="center">Vinicius Abe de Godoy</h5>
 <hr>
-<h4 align="center">Front-End desenvolvido por: </h4>
+<h4 align="center">Back-End desenvolvido por: </h4>
 <h5 align="center">Julia Fernandes Santana</h5>
 <h5 align="center">Pedro Henrique Soares Pinheiro</h5>
 <h6 align="center"> <a href="https://github.com/julyca/fogo-no-parquinho-backend">GitHub do Back-End</a> </h6>
@@ -13,7 +13,7 @@
 <hr>
 <h3>Escopo do projeto</h3>
 <p>
-Este projeto foi desenvolvido como um trabalho para a matéria Linguagens de programação 1(anual), lecionada pelo professor Murilo Zanini de Carvalho. Neste projeto realizamos a construção de um site focado em ser uma rede social de reviews, onde os usuarios podem avaliar as matérias e professores de uma universidade qualquer. O Front-end foi desenvolvido em Flutter/Dart e o Back-end foi desenvolvido em Kotlin.
+Este projeto foi desenvolvido como um trabalho para a matéria Linguagens de programação 1(anual), lecionada pelo professor Murilo Zanini de Carvalho. Neste projeto realizamos a construção de um site focado em ser uma rede social de reviews, onde os usuarios podem avaliar as matérias e professores de uma universidade qualquer. O Front-end foi desenvolvido em Flutter/Dart e o Back-end foi desenvolvido em Kotlin. O site foi feito para ser responsivo em dispositivos com uma largura mínima de 500px.
 </p>
 <h3>O site conta com 7 seções, que são:</h3> 
 <ul>
@@ -28,10 +28,17 @@ Este projeto foi desenvolvido como um trabalho para a matéria Linguagens de pro
 </ul>
 <hr>
 <h3>Telas do aplicativo</h3>
+<h4>Sketch em Adobe Xd</h4>
+<img src="https://media3.giphy.com/media/7GkkvHlzNWfdPdqj6O/giphy.gif?cid=790b7611090028a877ace59c945298de7e636448ddf11c53&rid=giphy.gif&ct=g">
+<h4>Versão final</h4>
+<img src="https://media0.giphy.com/media/1PQFZnkFK2Zy3Kskcm/giphy.gif?cid=790b76117d65232100af6857b14253d443d68487224a73cc&rid=giphy.gif&ct=g">
+<hr>
 
-<hr>
-<hr>
 <h3>Video de apresentação do projeto:</h3>
+
+
+
+https://youtu.be/u8B3CUmO9ug
 <hr>
 
 <h3> Briefing de principais widgets</h3>
